@@ -1,0 +1,8 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><link rel="icon" href="data:,"><title>Reading company financials</title><link rel="stylesheet" href="assets/style.css"></head><body>
+<main><h1 id="t"></h1><p id="p" style="color:var(--m)"></p><p class="mono lbl" id="prog"></p><div id="list"></div><p class="disc">Education, not personal financial advice.</p></main>
+<script src="assets/lessons.js"></script><script>
+const C=COURSE,L=LESSONS;t.textContent=C.title;p.textContent=C.promise;
+prog.textContent=Object.values(L).filter(x=>x.status=="done").length+" of 14 lessons ready";
+list.innerHTML=C.parts.map(pt=>`<h2>${pt.name}</h2>`+pt.ids.map(i=>{const x=L[i],s=x.status;
+const built=s=='done';return `<${built?'a':'div'} class="lr ${s}"${built?` href="lesson-${i}.html"`:''}><span class="n">${i}</span><span class="tt">${x.title}<br><span class="lbl">${x.company?x.company+' · '+x.period:'&nbsp;'}</span></span><span class="st ${s}">${s=='done'?'Open →':s=='next'?'Up next':'Coming soon'}</span></${built?'a':'div'}>`}).join('')).join('');
+</script></body></html>
